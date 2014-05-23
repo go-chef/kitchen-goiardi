@@ -29,9 +29,11 @@ module Kitchen
     #class Goiardi < Kitchen::Driver::SSHBase
     class Goiardi < ChefBase
 
+      default_config :client_rb, {}
       default_config :goiardi_version, 'v0.5.1'
       default_config :goiardi_port, '4545'
-      default_config :goiardi_location, "https://github.com/bradbeam/goiardi/releases/download/"
+      default_config :json_attributes, true
+      default_config :goiardi_location, "https://github.com/bradbeam/goiardi/releases/download"
 
       def create_sandbox         
         super
@@ -43,9 +45,11 @@ module Kitchen
         data = default_config_rb
         <<-PREPARE
           sh -c '
+            #{Util.shell_helpers}
+
             if [ ! -f #{config[:root_path]}/goiardi ]; then
               echo -n "Downloading goiardi..."
-              wget #{config[:goiardi_location]}/#{config[:goiardi_version]}/goiardi -O #{config[:root_path]}/goiardi -o #{config[:root_path]}/goiardi_download.log
+              do_download #{config[:goiardi_location]}/#{config[:goiardi_version]}/goiardi #{config[:root_path]}/goiardi
               chmod 755 #{config[:root_path]}/goiardi
               echo "done!"
             fi
