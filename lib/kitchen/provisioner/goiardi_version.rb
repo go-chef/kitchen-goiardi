@@ -21,6 +21,6 @@ module Kitchen
   module Provisioner
 
     # Version string for Goiardi Kitchen provisioner
-    GOIARDI_VERSION = "0.1.0.dev"
+    GOIARDI_VERSION = "0.1.0"
   end
 end
