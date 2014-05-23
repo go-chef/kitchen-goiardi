@@ -10,13 +10,12 @@ Gem::Specification.new do |spec|
   spec.email         = ['brad.beam@b-rad.info']
   spec.description   = %q{A Test Kitchen Provisioner for Goiardi}
   spec.summary       = spec.description
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/go-chef/kitchen-goiardi'
   spec.license       = 'Apache 2.0'
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = []
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  #spec.require_paths = ['lib', "support"]
   spec.require_paths = ['lib']
 
   spec.add_dependency 'test-kitchen', '~> 1.0'
@@ -24,7 +23,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.3'
   spec.add_development_dependency 'rake'
 
- # spec.add_development_dependency 'cane'
- # spec.add_development_dependency 'tailor'
- # spec.add_development_dependency 'countloc'
 end
